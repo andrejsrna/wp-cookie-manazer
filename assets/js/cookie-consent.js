@@ -11,21 +11,27 @@
         
         init: function() {
             console.log('Initializing GCCookieConsent');
-            this.cookieConsent = this.getCookie('gcc_cookie_consent');
-            console.log('Current cookie value:', this.cookieConsent);
-            console.log('jQuery loaded:', typeof jQuery !== 'undefined'); // Check if jQuery is available
-            console.log('Banner element exists:', $('#gcc-cookie-banner').length); // Check if banner exists in DOM
+            
+            // Try to get cookie consent from cookie
+            try {
+                this.cookieConsent = this.getCookie('gcc_cookie_consent');
+                console.log('Current cookie value:', this.cookieConsent);
+            } catch (e) {
+                console.log('Error parsing cookie:', e);
+                this.cookieConsent = null;
+            }
             
             // Always setup event listeners
             this.setupEventListeners();
             this.handleScriptBlocking();
             
-            // Show banner if no consent
-            if (!this.cookieConsent) {
-                console.log('No consent found, showing banner');
+            // Check if we need to show the banner
+            const shouldShowBanner = !this.cookieConsent || !gccData.isConsented;
+            console.log('Should show banner:', shouldShowBanner);
+            
+            if (shouldShowBanner) {
+                console.log('No valid consent found, showing banner');
                 this.showBanner();
-            } else {
-                console.log('Consent found:', this.cookieConsent);
             }
         },
 
@@ -33,7 +39,15 @@
         getCookie: function(name) {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return JSON.parse(parts.pop().split(';').shift());
+            if (parts.length === 2) {
+                const cookieValue = parts.pop().split(';').shift();
+                try {
+                    return JSON.parse(cookieValue);
+                } catch (e) {
+                    console.log('Error parsing cookie value:', cookieValue);
+                    return null;
+                }
+            }
             return null;
         },
 
@@ -120,9 +134,18 @@
         // Show cookie banner if no consent is stored
         showBanner: function() {
             const $banner = $('#gcc-cookie-banner');
+            console.log('Attempting to show banner');
+            console.log('Banner element:', $banner.length ? 'found' : 'not found');
             if ($banner.length) {
                 console.log('Banner element found, showing');
-                $banner.fadeIn(300);
+                $banner.css({
+                    'display': 'block',
+                    'position': 'fixed',
+                    'bottom': '0',
+                    'left': '0',
+                    'right': '0',
+                    'z-index': '999999'
+                }).show();
             } else {
                 console.error('Banner element not found!');
             }
