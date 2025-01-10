@@ -2,7 +2,7 @@
 /*
 Plugin Name: GDPR Cookie Manažer
 Description: Jednoduchý GDPR plugin pre správu cookies 
-Version: 1.0.0
+Version: 1.0.01
 Author: Andrej Srna
 License: GPL v2 or later
 */
