@@ -1,0 +1,254 @@
+.gcc-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+}
+
+.gcc-modal {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.gcc-modal h2 {
+    margin: 0 0 24px;
+    font-size: 28px;
+    color: #1a1a1a;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+}
+
+.gcc-cookie-content {
+    font-size: 15px;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.gcc-cookie-options {
+    margin: 30px 0;
+}
+
+.gcc-cookie-option {
+    margin-bottom: 16px;
+    padding: 20px;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.2s ease;
+}
+
+.gcc-cookie-option:hover {
+    background: #fff;
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.gcc-cookie-option label {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.gcc-description {
+    margin: 5px 0 0 32px;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+/* Custom checkbox styling */
+.gcc-cookie-option input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #cbd5e1;
+    border-radius: 6px;
+    margin-right: 12px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gcc-cookie-option input[type="checkbox"]:checked {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.gcc-cookie-option input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.gcc-cookie-option input[type="checkbox"]:disabled {
+    background-color: #94a3b8;
+    border-color: #94a3b8;
+    cursor: not-allowed;
+}
+
+.gcc-buttons {
+    margin-top: 24px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.gcc-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+}
+
+.gcc-btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.gcc-btn-primary:hover {
+    background: #1d4ed8;
+}
+
+.gcc-btn-secondary {
+    background: #e2e8f0;
+    color: #1e293b;
+}
+
+.gcc-btn-secondary:hover {
+    background: #cbd5e1;
+}
+
+.gcc-cookie-list {
+    margin: 8px 0 0 0;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.gcc-description {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* Settings button styling */
+.consentsettings.gcc-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin: 5px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 8px 16px;
+    font-size: 14px;
+    color: #475569;
+}
+
+.consentsettings.gcc-btn:hover {
+    background: #f1f5f9;
+    text-decoration: none;
+    color: #1e293b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .gcc-modal {
+        padding: 24px;
+        width: 95%;
+    }
+
+    .gcc-modal h2 {
+        font-size: 24px;
+    }
+
+    .gcc-buttons {
+        flex-direction: column;
+    }
+
+    .gcc-btn {
+        width: 100%;
+    }
+
+    .gcc-cookie-content {
+        font-size: 14px;
+    }
+}
+
+/* Scrollbar styling */
+.gcc-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.gcc-modal::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 4px;
+}
+
+.gcc-modal::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.gcc-modal::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+.gcc-toggle-details {
+    background: none;
+    border: none;
+    color: #2563eb;
+    padding: 8px 0;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gcc-toggle-details:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.gcc-toggle-icon {
+    font-size: 10px;
+    transition: transform 0.2s ease;
+}
+
+.gcc-toggle-details[aria-expanded="true"] .gcc-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.gcc-cookie-details {
+    margin-top: 8px;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+} 

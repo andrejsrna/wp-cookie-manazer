@@ -1,0 +1,39 @@
+.gcc-cookie-details {
+    padding-left: 20px;
+    margin-top: 10px;
+    border-left: 2px solid #eee;
+}
+
+.gcc-toggle-details {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 0;
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.gcc-toggle-details:hover {
+    color: #333;
+}
+
+.gcc-toggle-icon {
+    transition: transform 0.2s ease;
+    display: inline-block;
+}
+
+.gcc-toggle-details[aria-expanded="true"] .gcc-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.gcc-cookie-list {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.gcc-cookie-list li {
+    margin: 5px 0;
+} 
